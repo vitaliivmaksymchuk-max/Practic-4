@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Практична робота 4 — DOM & BOM</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Вимога 1: Підключення скрипта в <head> з атрибутом defer -->
+  <script src="app.js" defer></script>
+</head>
+<body>
+
+  <header class="header">
+    <button id="themeToggleBtn" class="btn btn-secondary">Змінити тему</button>
+  </header>
+
+  <main class="container">
+    <h1>Калькулятор підписки та інтерактивні відгуки</h1>
+
+    <!-- Секція 1: Калькулятор вартості підписки -->
+    <section class="card">
+      <h2>1. Калькулятор вартості підписки</h2>
+      <!-- Вимога 3: Використання тегу <form> -->
+      <form id="calcForm" class="form">
+        <div class="form-group">
+          <label for="planSelect">Оберіть тарифний план:</label>
+          <select id="planSelect" class="form-control">
+            <option value="100">Базовий (100 грн/міс)</option>
+            <option value="250" selected>Стандартний (250 грн/міс)</option>
+            <option value="500">Преміум (500 грн/міс)</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="monthsInput">Кількість місяців (1–12):</label>
+          <input type="number" id="monthsInput" class="form-control" min="1" max="12" value="1" required>
+        </div>
+
+        <div class="form-group checkbox-group">
+          <label>
+            <input type="checkbox" id="discountCheckbox">
+            Отримати знижку 10% (за річну підписку або промокод)
+          </label>
+        </div>
+
+        <div class="result-box">
+          Підсумкова вартість: <span id="totalPrice">250</span> грн
+        </div>
+
+        <button type="submit" class="btn btn-primary">Оформити підписку</button>
+      </form>
+    </section>
+
+    <!-- Секція 2: Динамічний блок відгуків -->
+    <section class="card">
+      <h2>2. Відгуки (<span id="feedbackCount">0</span>)</h2>
+      
+      <form id="feedbackForm" class="form">
+        <div class="form-group">
+          <label for="authorInput">Ваше ім'я:</label>
+          <input type="text" id="authorInput" class="form-control" placeholder="Іван Іванов" required>
+        </div>
+
+        <div class="form-group">
+          <label for="textInput">Ваш відгук:</label>
+          <textarea id="textInput" class="form-control" rows="3" placeholder="Залиште свій коментар..." required></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-success">Додати відгук</button>
+      </form>
+
+      <div id="feedbackList" class="feedback-list">
+        <!-- Вузли відгуків додаватимуться динамічно -->
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Розмір вікна (BOM): <span id="windowSizeInfo">-</span></p>
+  </footer>
+
+</body>
+</html>
